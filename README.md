@@ -20,12 +20,14 @@ This was tested by comparing portfolios with identical or similar equity exposur
 
 | Portfolio | CAGR | Max DD (stress) | Normal Regime Return |
 |---|---|---|---|
-| Diversified (rebalanced annually) | 9.46% | -25.07% | 314% |
-| Static Diversified (same weights, never rebalanced) | 9.58% | -26.90% | 312% |
-| Fixed 60% SPY + 40% cash | 6.79% | -30.69% | 181% |
-| Rebalanced Cash 60/40 | 6.81% | -29.77% | 188% |
+| Diversified — Annual rebalance | 9.46% | -25.07% | 314% |
+| Diversified — Quarterly rebalance | 9.38% | -27.24% | 307% |
+| Diversified — Monthly rebalance | 9.24% | -28.17% | 305% |
+| Fixed 60% SPY + 40% cash | 6.81% | -29.77% | 188% |
 
-The Fixed 60% SPY + 40% cash portfolio — no hedging assets, no timing, no correlation management — delivers stress protection comparable to the fully diversified portfolio. The rebalancing premium is negligible over 20 years (Static Diversified: 312% vs Diversified rebalanced: 314%). The hedging assets (TLT, IEF, GLD) do add real return over cash in normal regimes — approximately 2.7pp of CAGR annually, compounding to the difference between 181% and 314% cumulative return. But the protection mechanism in stress is not driven by the correlation properties of those assets. It is driven by the reduction in equity exposure itself. The same reduction in SPY — achieved with cash instead of bonds and gold — delivers comparable stress protection at lower normal-regime return. **The hedging assets earn their keep in normal regimes. They do not earn their keep as a protection mechanism in stress.**
+Rebalancing frequency does not materially change the result. Annual, quarterly, and monthly rebalancing produce nearly identical outcomes — 314%, 307%, and 305% cumulative return in normal regimes, and max drawdowns of -25%, -27%, and -28% in stress. The rebalancing premium is not the mechanism.
+
+The Fixed 60% SPY + 40% cash portfolio — no hedging assets, no timing, no correlation management — delivers stress protection comparable to all three Diversified variants despite having no hedging assets. The hedging assets (TLT, IEF, GLD) do add real return over cash in normal regimes — approximately 2.7pp of CAGR annually, compounding to the difference between 188% and 314% cumulative return. But the protection mechanism in stress is not driven by the correlation properties of those assets. It is driven by the reduction in equity exposure itself. The same reduction in SPY — achieved with cash instead of bonds and gold — delivers comparable stress protection at lower normal-regime return. **The hedging assets earn their keep in normal regimes. They do not earn their keep as a protection mechanism in stress.**
 
 This has a direct consequence for the cost of diversification: TLT, IEF, and GLD add return over cash in normal regimes — but the protection they are sold as providing in stress is not delivered by their correlation properties. It is delivered by the simple fact of holding less SPY. The industry charges for correlation-based protection. The data shows the protection comes from something simpler and cheaper.
 
@@ -219,7 +221,7 @@ The algorithm detected **9 episodes** over the extended sample (November 2006 �
 - All ETFs used in the classic portfolio robustness check were verified to have data available from February 2006 onward — prior to the November 2006 warmup cutoff. No ETF in the tested universe required forward-filling or partial-period treatment.
 - Historical Treasury returns (1980–2026) are estimated via duration approximation (r ≈ −8.5 × Δyield / 100), not observed directly. Used for structural correlation analysis only.
 - Stress episode detector sensitivity was not tested across alternative definitions (VIX-based, recession proxies, different drawdown thresholds).
-- The decomposition result (dilution vs rebalancing) is specific to this sample and these asset weights. Different assets or different weight configurations may produce different decomposition results.
+- The rebalancing frequency test (annual, quarterly, monthly) shows negligible differences within this sample. This does not mean rebalancing never matters — it means the mechanism of protection is not rebalancing frequency but equity exposure level. Different assets, different weight configurations, or different market regimes may produce different results.
 - The project does not test whether different implementations of direct exposure management (other MA windows, volatility-scaling, momentum signals) would produce similar results. The MA200 is one instance of the mechanism, not a proof of the mechanism's generality.
 - All tested portfolios use static or annually rebalanced weights. Dynamic strategies — risk parity, target volatility, correlation-aware allocation — were not tested. A sophisticated practitioner may argue that dynamic correlation management addresses the regime-dependency problem identified here. Two responses: first, these strategies are not accessible to most individual investors without institutional access, management fees, and operational complexity that the typical 60/40 investor does not have. Second, the decomposition finding suggests that managing correlation more intelligently still builds on the wrong premise — if the protection mechanism is exposure dilution rather than correlation, then sophistication in correlation management does not address the mechanism. This remains an open question that the current data does not close.
 
