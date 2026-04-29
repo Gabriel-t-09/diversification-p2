@@ -6,7 +6,7 @@
 
 ## The Question
 
-The industry sells diversification as a mechanism: hold negatively correlated assets, and when equities fall, the hedges rise, protecting the portfolio. The question this project asks is not whether diversification works — it is whether the mechanism is what the industry says it is.
+The standard framework assumes correlation. Hold assets that move in opposite directions — equities and bonds, stocks and gold — and when one falls, the other cushions the blow. The question this project asks is not whether diversification works — it is whether the mechanism is what the framework says it is.
 
 Specifically: is the protection in diversified portfolios delivered by the correlation between assets, or simply by having less equity exposure? The answer changes what you should ask your portfolio manager.
 
@@ -27,9 +27,11 @@ This was tested by comparing portfolios with identical or similar equity exposur
 
 Rebalancing frequency does not materially change the result. Annual, quarterly, and monthly rebalancing produce nearly identical outcomes — 314%, 307%, and 305% cumulative return in normal regimes, and max drawdowns of -25%, -27%, and -28% in stress. The rebalancing premium is not the mechanism.
 
-The Fixed 60% SPY + 40% cash portfolio — no hedging assets, no timing, no correlation management — delivers stress protection comparable to all three Diversified variants despite having no hedging assets. The hedging assets (TLT, IEF, GLD) do add real return over cash in normal regimes — approximately 2.7pp of CAGR annually, compounding to the difference between 188% and 314% cumulative return. But the protection mechanism in stress is not driven by the correlation properties of those assets. It is driven by the reduction in equity exposure itself. The same reduction in SPY — achieved with cash instead of bonds and gold — delivers comparable stress protection at lower normal-regime return. **The hedging assets earn their keep in normal regimes. They do not earn their keep as a protection mechanism in stress.**
+The Fixed 60% SPY + 40% cash portfolio — no hedging assets, no timing, no correlation management — delivers stress protection comparable to all three Diversified variants. The hedging assets (TLT, IEF, GLD) do add real return over cash in normal regimes — approximately 2.7pp of CAGR annually, compounding to the difference between 188% and 314% cumulative return. But the protection mechanism in stress is not driven by the correlation properties of those assets. It is driven by the reduction in equity exposure itself. **The hedging assets earn their keep in normal regimes. They do not earn their keep as a protection mechanism in stress.**
 
-This has a direct consequence for the cost of diversification: TLT, IEF, and GLD add return over cash in normal regimes — but the protection they are sold as providing in stress is not delivered by their correlation properties. It is delivered by the simple fact of holding less SPY. The industry charges for correlation-based protection. The data shows the protection comes from something simpler and cheaper.
+![Rebalancing Frequency — Does It Matter?](images/fig12_rebalancing_frequency.png)
+
+This has a direct consequence for the cost of diversification: TLT, IEF, and GLD add return over cash in normal regimes — but the protection they are sold as providing in stress is not delivered by their correlation properties. It is delivered by the simple fact of holding less SPY. The standard framework charges for correlation-based protection. The data shows the protection comes from something simpler and cheaper.
 
 The Diversified portfolio underperforms SPY Buy & Hold by approximately 110 percentage points in cumulative return over normal regime days (423% vs 314%). This is not bad luck or a bad period. It is the structural cost of complexity that does not add the mechanism it claims to add.
 
@@ -76,6 +78,8 @@ Over the full investable sample (November 2006 – April 2026):
 
 The MA200 Filter — 100% SPY when above its 200-day moving average, 50% SPY + 50% cash when below — dominates all tested portfolios in the risk/return space within this sample. This result is consistent with the decomposition finding: a rule that reduces SPY exposure when price signals deterioration, and holds full exposure otherwise, captures the protection mechanism without the permanent carry cost. See the section on the MA200 as illustration before interpreting the absolute CAGR figures.
 
+![Equity Curves — Full Period (2006–2026)](images/fig1_equity_curves.png)
+
 **In normal regimes (83.9% of all trading days):**
 
 | Portfolio | Annualized Return | Cumulative Return |
@@ -96,11 +100,13 @@ Note: the MA200 Filter also reduced exposure on 574 days classified as normal re
 
 The Diversified portfolio and the MA200 Filter deliver nearly identical downside protection in stress. Given the decomposition result, this similarity is expected — both reduce SPY exposure, through different mechanisms.
 
+![Max Drawdown by Episode](images/fig3_episode_drawdowns.png)
+
 ---
 
 ## The 2022 Case — A Predictable Failure of Premise
 
-2022 was not a surprise. The rolling SPY/TLT correlation had been returning toward positive since 2021 — visible in the data before 2022 arrived. A manager monitoring rolling correlation would have observed the regime changing. The industry continued selling 60/40 as if the underlying premise — negative equity/bond correlation — remained stable.
+2022 was not a surprise. The rolling SPY/TLT correlation had been returning toward positive since 2021 — visible in the data before 2022 arrived. A manager monitoring rolling correlation would have observed the regime changing. The standard framework continued as if the underlying premise — negative equity/bond correlation — remained stable.
 
 When 2022 arrived, the premise had already broken:
 
@@ -110,6 +116,8 @@ When 2022 arrived, the premise had already broken:
 - GLD: flat
 
 The Diversified portfolio drew down -13.9% while the MA200 Filter drew down -8.6% — not because the MA200 is a superior instrument, but because it had reduced SPY exposure in May 2022 based on price alone, without depending on any correlation assumption that could break.
+
+![2022 — The Year the Hedge Broke](images/fig4_2022_zoom.png)
 
 2022 is not evidence that correlation-based protection never works. It worked in 2008 and 2020. It is evidence that the protection is contingent on a macroeconomic regime that is not permanent — and that the regime was visibly deteriorating before the loss arrived.
 
@@ -124,6 +132,8 @@ The negative SPX/Treasury correlation that underpins the 60/40 portfolio is not 
 - **2022–present:** correlation returning toward positive
 
 The 20-year period of negative correlation was the exception, not the rule. 2022 was a return to the historical baseline.
+
+![SPX / Treasury Rolling Correlation (252-day) — 1980 to 2026](images/fig6_longrun_correlation.png)
 
 This fragility has a structural explanation that goes beyond sample size. Using correlation as a protection tool inherits two limitations simultaneously. First, Pearson correlation is linear — it measures average co-movement but does not capture tail dependence or regime-dependent relationships. Second, it is backward-looking by construction — using historical correlation to build forward-looking protection assumes regime stability. The 1980–2026 data shows three distinct regimes. Assuming stability is not a small error — it is the wrong model for the problem. This connects directly to the limitation declared in Project 1, where these properties of linear correlation were documented formally.
 
@@ -150,6 +160,8 @@ The carry cost finding holds across all tested diversification frameworks:
 | SPY Buy & Hold | 10.70% | 0.62 | 0.75 | -55.19% | 1.40 |
 
 Every classic diversified portfolio faces the same trade-off: lower drawdown requires substantially lower CAGR. No portfolio resolves this trade-off within this sample. The pattern is consistent with the decomposition finding — all diversified portfolios achieve protection through exposure dilution, and all pay for it in normal regimes.
+
+![Portfolio Rankings — Normalized Score](images/fig11_heatmap.png)
 
 ---
 
@@ -257,7 +269,7 @@ The algorithm detected **9 episodes** over the extended sample (November 2006 �
 git clone https://github.com/Gabriel-t-09/diversification-p2
 cd diversification-p2
 pip install -r requirements.txt
-jupyter notebook p2_analysis.ipynb
+jupyter notebook notebook/p2_analysis.ipynb
 ```
 
 On first run, the notebook downloads data and saves to `data/ret_b.csv` and `data/ret_a.csv`. Subsequent runs load from cache.
@@ -271,7 +283,7 @@ This project stands alone. Data, methodology, and conclusions are self-contained
 Within the series:
 - **Project 1:** The mechanism — risk asset correlation collapses rapidly under stress, regardless of how many risk assets are held.
 - **Project 2 (this):** The practical consequence — diversification carries a permanent cost in normal regimes, its protection is regime-dependent, and both the cost and the protection are explained primarily by exposure dilution rather than by the hedging assets or the rebalancing process.
-- **Project 3:** The structural explanation — why traditional assets share the same payoff profile under stress, and what genuine diversification requires.
+- **Project 3:** The structural explanation — why traditional assets share similar payoff direction under stress, and what genuine diversification requires.
 
 ---
 
